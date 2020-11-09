@@ -1,0 +1,27 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: 
+ =?utf-8?b?0KHQsdGA0L7RgSDQv9Cw0YDQvtC70Y8g0L3QsCAxMjcuMC4wLjE6ODAwMA==?=
+From: webmaster@localhost
+To: anastasia.petrukhova@gmail.com
+Date: Fri, 16 Oct 2020 08:46:25 -0000
+Message-ID: 
+ <160283798538.4932.12017068456776080969@LAPTOP-ATEGDJMQ.WirelessAP>
+
+
+Вы получили это письмо, потому что вы (или кто-то другой) запросили восстановление пароля от учётной записи на сайте 127.0.0.1:8000, которая связана с этим адресом электронной почты.
+
+Пожалуйста, перейдите на эту страницу и введите новый пароль:
+
+http://127.0.0.1:8000/auth/reset/MQ/5ks-011ae3b5fc079c6eec2e/
+
+Ваше имя пользователя (на случай, если вы его забыли): anast
+
+Спасибо, что используете наш сайт!
+
+Команда сайта 127.0.0.1:8000
+
+
+
+-------------------------------------------------------------------------------
