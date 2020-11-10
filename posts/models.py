@@ -32,7 +32,7 @@ class Post(models.Model):
         blank=True, null=True,
         )
 
-    image = models.ImageField(upload_to='posts/', blank=True, null=True)
+    image = models.ImageField(upload_to='posts/', blank=True, null=True, verbose_name = "Image")
 
     def __str__(self):
         return f"{self.text}", self.image
@@ -70,3 +70,7 @@ class Follow(models.Model):
         on_delete=models.CASCADE, 
         related_name="following",
         )
+
+
+    class Meta:
+        unique_together = ("user", "author")

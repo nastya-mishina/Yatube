@@ -8,7 +8,7 @@ from django.views.decorators.cache import cache_page
 
 
 def index(request):
-    post_list = Post.objects.order_by('-pub_date').all()
+    post_list = Post.objects.all()
     paginator = Paginator(post_list, 10)
     page_number = request.GET.get("page")
     page = paginator.get_page(page_number)
@@ -61,15 +61,13 @@ def post_view(request, username, post_id):
     author = post.author
     form = CommentForm()
     comments = post.comments.all()
-    posts = Post.objects.filter(author__username=username)
-    count_posts = len(posts)
+    count_posts = author.posts.count
     return render(request, "post.html", {"post": post, "author": author, "form": form, "comments": comments, "count_posts": count_posts})
 
 
 @login_required
 def post_edit(request, username, post_id):
     post = get_object_or_404(Post, pk=post_id, author__username=username)
-    profile = get_object_or_404(User, username=username)
 
     if post.author != request.user:
         return redirect(reverse("post", kwargs={"post": post}))
@@ -91,7 +89,7 @@ def post_edit(request, username, post_id):
 @login_required
 def add_comment(request, username, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    author = get_object_or_404(User, username=request.user)
+    author = request.user
     if request.method != "POST":
         form = CommentForm()
         return redirect("post", username, post_id)
@@ -132,7 +130,7 @@ def follow_index(request):
 @login_required
 def profile_follow(request, username):
     user = request.user
-    author = User.objects.get(username=username)
+    author = get_object_or_404(User, username=username)
     url = reverse("profile", kwargs={"username": author.username})
     if user == author:
         return redirect(url)
@@ -147,7 +145,7 @@ def profile_follow(request, username):
 @login_required
 def profile_unfollow(request, username):
     user = request.user
-    author = User.objects.get(username=username)
+    author = get_object_or_404(User, username=username)
     follow = Follow.objects.get(author=author, user=user)
     follow.delete()
     url = reverse("profile", kwargs={"username": author.username})
