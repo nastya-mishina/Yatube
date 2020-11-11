@@ -18,7 +18,7 @@ __pycache__/
 static/
 posts/static/
 media/
+.vscode/
+sent_emails/
 
 db.sqlite3
-
-.vscode
